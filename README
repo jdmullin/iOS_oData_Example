@@ -4,6 +4,12 @@ Demo iPhone application that uses an OData service to provide
 a list of entities and to manipulate those entities. A work
 in progress...
 
+Screencasts that reference/use this source:
+- Getting Started with iOS Development and Advantage
+  http://jdmullin.blogspot.com/2011/05/getting-started-with-ios-development.html
+- iPhone oData Client, Part 2
+  http://jdmullin.blogspot.com/2011/05/iphone-odata-client-part-2.html
+
 Current Functionality:
 - Read dataset asynchronously
 - Insert/Update/Delete entities
