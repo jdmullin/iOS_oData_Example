@@ -1,0 +1,19 @@
+iPhone OData Demo Application
+
+Demo iPhone application that uses an OData service to provide
+a list of entities and to manipulate those entities. A work
+in progress...
+
+Current Functionality:
+- Read dataset asynchronously
+- Insert/Update/Delete entities
+
+Future Functionality:
+- Paging support
+- Filter and OrderBy 
+
+TODO:
+- Bundle OData library with demo so no external libs or
+  search path need to be configured.
+- Make URL configurable via the application, currently
+  hard-coded in the app delegate.
