@@ -11,7 +11,9 @@
 
 @implementation utils
 
+////////////////////////////////////////////////////////////////////////
 // Utility function to get the application delegate
+////////////////////////////////////////////////////////////////////////
 + (oDataDemo1AppDelegate*)getApp {
     return (oDataDemo1AppDelegate*)[[UIApplication sharedApplication] delegate];
 }

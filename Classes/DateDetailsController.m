@@ -3,7 +3,7 @@
 //  oDataDemo1
 //
 //  Created by Jeremy Mullin on 6/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Sybase. All rights reserved.
 //
 
 #import "DateDetailsController.h"
@@ -13,6 +13,9 @@
 
 @synthesize dateName, dateValue, customSwitch, delegate;
 
+////////////////////////////////////////////////////////////////////////
+// initWithNibName
+////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -22,6 +25,10 @@
     return self;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// dealloc
+////////////////////////////////////////////////////////////////////////
 - (void)dealloc
 {
     [dateName release];
@@ -31,6 +38,10 @@
     [super dealloc];    
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// didReceiveMemoryWarning
+////////////////////////////////////////////////////////////////////////
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -39,7 +50,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - Custom Switch Delegate
+
+////////////////////////////////////////////////////////////////////////
+// callback when our yes/no switch is touched
+////////////////////////////////////////////////////////////////////////
 - (void) valueChanged:(BOOL)value {
     [datePicker setEnabled:value];
 }
@@ -47,13 +63,19 @@
 
 #pragma mark - View lifecycle
 
-
+////////////////////////////////////////////////////////////////////////
+// viewDidLoad
+////////////////////////////////////////////////////////////////////////
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.        
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// viewDidUnload
+////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload
 {
     [datePicker release];
@@ -66,39 +88,58 @@
     // e.g. self.myOutlet = nil;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// viewWillAppear
+////////////////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated {
     self.title = dateName;   
     // snug our datepicker right below the tableView
     datePicker.frame = CGRectMake( 0, headerTableView.frame.size.height, datePicker.frame.size.width, datePicker.frame.size.height );
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// viewWillDisappear
+////////////////////////////////////////////////////////////////////////
 - (void)viewWillDisappear:(BOOL)animated {
     // delegate is responsible for doing something with the date
     [delegate didCloseWithDate: ( [self.customSwitch isOn] ) ? datePicker.date : nil whosNameIs:self.title];
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// shouldAutorotateToInterfaceOrientation
+////////////////////////////////////////////////////////////////////////
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
 #pragma mark -
 #pragma mark Table view data source
 
+////////////////////////////////////////////////////////////////////////
 // Customize the number of sections in the table view.
+////////////////////////////////////////////////////////////////////////
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Customize the number of rows in the table view.
+////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Customize the appearance of table view cells.
+////////////////////////////////////////////////////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";

@@ -5,7 +5,6 @@
 //  Created by Jeremy Mullin on 5/12/11.
 //  Copyright 2011 Sybase. All rights reserved.
 //
-
 #import "RootViewController.h"
 
 #import "tasksData.h"
@@ -19,6 +18,9 @@
 #pragma mark -
 #pragma mark View lifecycle
 
+////////////////////////////////////////////////////////////////////////
+// refresh tasks async
+////////////////////////////////////////////////////////////////////////
 - (void)refreshTasks {
     
     void (^getTasks)(void) = ^{
@@ -56,12 +58,17 @@
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Member of our parent, PullRefreshTableViewController
+////////////////////////////////////////////////////////////////////////
 - (void)refresh {
     [self refreshTasks];
 }
 
 
+////////////////////////////////////////////////////////////////////////
+// viewDidLoad
+////////////////////////////////////////////////////////////////////////
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -85,6 +92,10 @@
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// copy a task's properties to another task object
+////////////////////////////////////////////////////////////////////////
 void copyTask( tasks_Model_Entities_Tasks *dest, tasks_Model_Entities_Tasks *src ) {
     // Create a "deep copy" with our own data even for reference types, we don't
     // want modifications of this copy to change the original.
@@ -98,12 +109,20 @@ void copyTask( tasks_Model_Entities_Tasks *dest, tasks_Model_Entities_Tasks *src
     [dest setfinished:[[src getfinished] copy]];
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// Clone an existing task
+////////////////////////////////////////////////////////////////////////
 tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
     tasks_Model_Entities_Tasks *newTask = [[tasks_Model_Entities_Tasks alloc] init];
     copyTask( newTask, task );
     return newTask;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// Push details view controller on the nav stack
+////////////////////////////////////////////////////////////////////////
 - (void) pushDetailsWithIndexPath: (NSIndexPath *) indexPath  {
     TaskDetailsController *detailViewController = [[TaskDetailsController alloc] initWithNibName:@"taskDetailsController" bundle:nil];
     detailViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -131,6 +150,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 }
 
 
+////////////////////////////////////////////////////////////////////////
+// addItem
+////////////////////////////////////////////////////////////////////////
 - (void)addItem {
     [self pushDetailsWithIndexPath:nil];
 }
@@ -140,6 +162,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 #pragma mark -
 #pragma mark Implementation of TaskDetailsDelegate
 
+////////////////////////////////////////////////////////////////////////
+// Callback when details view added a new task
+////////////////////////////////////////////////////////////////////////
 - (void)didAddTask:(tasks_Model_Entities_Tasks*)task {
     // If task is nil, user cancelled    
     if ( task != nil ) {
@@ -158,6 +183,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 }
 
 
+////////////////////////////////////////////////////////////////////////
+// Callback when details view updated a task
+////////////////////////////////////////////////////////////////////////
 - (void)didUpdateTask:(tasks_Model_Entities_Tasks*)task atIndexPath:(NSIndexPath*)indexPath {
     // If task is nil, user cancelled
     if ( task != nil ) {
@@ -181,19 +209,25 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 #pragma mark -
 #pragma mark Table view data source
 
+////////////////////////////////////////////////////////////////////////
 // Customize the number of sections in the table view.
+////////////////////////////////////////////////////////////////////////
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Customize the number of rows in the table view.
+////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_tasksArray count];
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Customize the appearance of table view cells.
+////////////////////////////////////////////////////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -212,7 +246,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Override to support editing the table view.
+////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -235,6 +271,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 #pragma mark -
 #pragma mark Table view delegate
 
+////////////////////////////////////////////////////////////////////////
+// didSelectRowAtIndexPath
+////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
     [self pushDetailsWithIndexPath:indexPath];	      
 }
@@ -243,6 +282,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 #pragma mark -
 #pragma mark Memory management
 
+////////////////////////////////////////////////////////////////////////
+// didReceiveMemoryWarning
+////////////////////////////////////////////////////////////////////////
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -250,6 +292,10 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// viewDidUnload
+////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
@@ -257,6 +303,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 }
 
 
+////////////////////////////////////////////////////////////////////////
+// dealloc
+////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
     [super dealloc];        
     [_tasksArray release];

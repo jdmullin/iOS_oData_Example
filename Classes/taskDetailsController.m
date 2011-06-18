@@ -13,6 +13,9 @@
 @synthesize taskDatePicker, task, taskIndexPath;
 @synthesize delegate;
 
+////////////////////////////////////////////////////////////////////////
+// initWithNibName
+////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -22,6 +25,10 @@
     return self;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// dealloc
+////////////////////////////////////////////////////////////////////////
 - (void)dealloc
 {
     [taskDatePicker release];
@@ -31,6 +38,10 @@
     [super dealloc];
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// didReceiveMemoryWarning
+////////////////////////////////////////////////////////////////////////
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -39,7 +50,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - Date Details Delegate
+
+////////////////////////////////////////////////////////////////////////
+// Callback when date details view closes
+////////////////////////////////////////////////////////////////////////
 - (void)didCloseWithDate:(NSDate*)date whosNameIs:(NSString*)name {
     if ( name == @"Started" ) {
         [self.task setstarted:date];
@@ -52,14 +68,22 @@
     [taskDetailsTable reloadData];
 }
 
+
 #pragma mark - TextField Delegate
+
+////////////////////////////////////////////////////////////////////////
+// callback to hide the keyboard when the user hits "done"
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     [theTextField resignFirstResponder];
 	return NO;
 }
 
+
 #pragma mark - View lifecycle
 
+////////////////////////////////////////////////////////////////////////
+// viewDidLoad
+////////////////////////////////////////////////////////////////////////
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -79,6 +103,10 @@
     [cancelButtonItem release];        
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// viewDidUnload
+////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload
 {
     [self setTaskDatePicker:nil];
@@ -89,6 +117,10 @@
     [super viewDidUnload];
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// viewWillAppear
+////////////////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated {
     UITableViewCell *cell = [taskDetailsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITextField *textView = (UITextField*)([cell.contentView.subviews objectAtIndex:0]);
@@ -96,20 +128,32 @@
         [textView becomeFirstResponder];
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// shouldAutorotateToInterfaceOrientation
+////////////////////////////////////////////////////////////////////////
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
 #pragma mark Save and cancel button event handlers
 
+////////////////////////////////////////////////////////////////////////
+// Grab text field from the table cell and save the task name
+////////////////////////////////////////////////////////////////////////
 - (void)saveTaskName {
     UITableViewCell *cell = [taskDetailsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITextField *textView = (UITextField*)([cell.contentView.subviews objectAtIndex:0]);
     [self.task setname:textView.text];    
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// event for save button touched
+////////////////////////////////////////////////////////////////////////
 - (void)save {            
     // save name
     [self saveTaskName];
@@ -121,6 +165,10 @@
         [delegate didUpdateTask:self.task atIndexPath:self.taskIndexPath];         
 }
 
+
+////////////////////////////////////////////////////////////////////////
+// event for cancel button touched
+////////////////////////////////////////////////////////////////////////
 - (void)cancel {
     [delegate didAddTask:nil];
 }
@@ -128,13 +176,17 @@
 #pragma mark -
 #pragma mark Table view data source
 
+////////////////////////////////////////////////////////////////////////
 // Customize the number of sections in the table view.
+////////////////////////////////////////////////////////////////////////
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Customize the number of rows in the table view.
+////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ( section == 0 )
         return 1;
@@ -143,7 +195,9 @@
 }
 
 
+////////////////////////////////////////////////////////////////////////
 // Customize the appearance of table view cells.
+////////////////////////////////////////////////////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -197,6 +251,9 @@
 #pragma mark -
 #pragma mark Table view delegate
 
+////////////////////////////////////////////////////////////////////////
+// row in table selected, push date details view
+////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
     if ( [indexPath section] == 1 ) {
         // If user modified the task name we need to save it before switch views or the modifications

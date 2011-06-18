@@ -10,6 +10,12 @@ Screencasts that reference/use this source:
 - iPhone oData Client, Part 2
   http://jdmullin.blogspot.com/2011/05/iphone-odata-client-part-2.html
 
+Third-Party:
+- PCCustomSwitch by Paul Crawford 
+  https://github.com/pcrawfor/PCCustomSwitch
+- PullRefreshTableViewController by Leah Culver
+  https://github.com/leah/PullToRefresh
+
 Current Functionality:
 - Read dataset asynchronously
 - Insert/Update/Delete entities
