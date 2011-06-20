@@ -130,8 +130,7 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
     
     if ( indexPath != nil ) {
         // Use a copy of the task, not the original, in case the user makes changes and then cancels
-        taskUpdating = [_tasksArray objectAtIndex:[indexPath row]];
-        detailViewController.task = cloneTask( taskUpdating );
+        detailViewController.task = cloneTask( [_tasksArray objectAtIndex:[indexPath row]] );
     }
     else
         // Create an empty task for the new entry
@@ -189,6 +188,7 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 - (void)didUpdateTask:(tasks_Model_Entities_Tasks*)task atIndexPath:(NSIndexPath*)indexPath {
     // If task is nil, user cancelled
     if ( task != nil ) {
+        tasks_Model_Entities_Tasks *taskUpdating = [_tasksArray objectAtIndex:[indexPath row]];
         // we passed the details view a cloned task, copy task data into the original task
         // we saved a reference to before pushing the details view
         copyTask( taskUpdating, task );

@@ -16,7 +16,6 @@
     NSMutableArray *_tasksArray;
     NSString *errorString;
     NSOperationQueue *_jobQueue;
-    tasks_Model_Entities_Tasks *taskUpdating;
 }
 
 @property (nonatomic, retain) NSString *errorString;

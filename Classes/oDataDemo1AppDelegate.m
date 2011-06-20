@@ -25,8 +25,8 @@
     
     // Override point for customization after application launch.
     WindowsCredential *cred = [[WindowsCredential alloc] initWithUserName:@"adssys" password:@""];    
-    //self.proxy = [[tasksData alloc] initWithUri:@"http://jdsmac_win7:6272/adsweb/example_db/1/" credential:cred];
-    self.proxy = [[tasksData alloc] initWithUri:@"https://devzone.advantagedatabase.com:6282/adsweb/example_db/1/" credential:cred];
+    self.proxy = [[tasksData alloc] initWithUri:@"http://jdsmac_win7:6272/adsweb/example_db/1/" credential:cred];
+    //self.proxy = [[tasksData alloc] initWithUri:@"https://devzone.advantagedatabase.com:6282/adsweb/example_db/1/" credential:cred];
     [cred release];
     
     // Set the navigation controller as the window's root view controller and display.
@@ -88,6 +88,7 @@
 - (void)dealloc {
 	[navigationController release];
 	[window release];
+    [self.proxy release];
 	[super dealloc];
 }
 
