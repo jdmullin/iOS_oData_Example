@@ -19,12 +19,12 @@
 		3C14C68413A7E9B10018C41B /* DateDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C14C68213A7E9B10018C41B /* DateDetailsController.m */; };
 		3C14C68513A7E9B10018C41B /* DateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C14C68313A7E9B10018C41B /* DateDetailsController.xib */; };
 		3C359FA0138F0537003AD126 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C359F9F138F0537003AD126 /* PullRefreshTableViewController.m */; };
-		3C359FA2138F0680003AD126 /* libMSODataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C359FA1138F067F003AD126 /* libMSODataLib.a */; };
 		3C4CED2B13957D540019AFF5 /* taskDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4CED2913957D540019AFF5 /* taskDetailsController.m */; };
 		3C4CED2C13957D540019AFF5 /* taskDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4CED2A13957D540019AFF5 /* taskDetailsController.xib */; };
 		3C4CED2F13958CBB0019AFF5 /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4CED2E13958CBB0019AFF5 /* utils.m */; };
 		3C8FE916137C38C00045967E /* tasksData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8FE915137C38C00045967E /* tasksData.m */; };
 		3CA6CAC4138F099E00EBA875 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA6CAC3138F099E00EBA875 /* Security.framework */; };
+		3CC7006013AFE9DD00402726 /* libMSODataLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC7005F13AFE9DD00402726 /* libMSODataLib.a */; };
 		3CE161F7138E996E00D92694 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE161F6138E996E00D92694 /* arrow.png */; };
 		3CE161F9138E999600D92694 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE161F8138E999600D92694 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,6 @@
 		3C14C68313A7E9B10018C41B /* DateDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DateDetailsController.xib; path = Classes/DateDetailsController.xib; sourceTree = "<group>"; };
 		3C359F9E138F0537003AD126 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		3C359F9F138F0537003AD126 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
-		3C359FA1138F067F003AD126 /* libMSODataLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMSODataLib.a; path = "../../../../dev/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator/libMSODataLib.a"; sourceTree = "<group>"; };
 		3C4CED2813957D540019AFF5 /* taskDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = taskDetailsController.h; sourceTree = "<group>"; };
 		3C4CED2913957D540019AFF5 /* taskDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = taskDetailsController.m; sourceTree = "<group>"; };
 		3C4CED2A13957D540019AFF5 /* taskDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = taskDetailsController.xib; path = Classes/taskDetailsController.xib; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		3C8FE914137C38C00045967E /* tasksData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tasksData.h; sourceTree = "<group>"; };
 		3C8FE915137C38C00045967E /* tasksData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tasksData.m; sourceTree = "<group>"; };
 		3CA6CAC3138F099E00EBA875 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3CC7005F13AFE9DD00402726 /* libMSODataLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMSODataLib.a; path = "thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator/libMSODataLib.a"; sourceTree = "<group>"; };
 		3CE161F6138E996E00D92694 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		3CE161F8138E999600D92694 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* oDataDemo1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "oDataDemo1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -68,8 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC7006013AFE9DD00402726 /* libMSODataLib.a in Frameworks */,
 				3CA6CAC4138F099E00EBA875 /* Security.framework in Frameworks */,
-				3C359FA2138F0680003AD126 /* libMSODataLib.a in Frameworks */,
 				3CE161F9138E999600D92694 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -114,7 +114,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				3C359FA1138F067F003AD126 /* libMSODataLib.a */,
+				3CC7005F13AFE9DD00402726 /* libMSODataLib.a */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -247,11 +247,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = oDataDemo1_Prefix.pch;
-				HEADER_SEARCH_PATHS = /Users/jeremym/Dropbox/Advantage/demo/oDataSDK/ProjectFiles/Framework/bin/odatalib/include;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/**";
 				INFOPLIST_FILE = "oDataDemo1-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/jeremym/dev/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator",
+					"\"$(SRCROOT)/thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = oDataDemo1;
 			};
@@ -264,9 +264,12 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = oDataDemo1_Prefix.pch;
-				HEADER_SEARCH_PATHS = /Users/jeremym/Dropbox/Advantage/demo/oDataSDK/ProjectFiles/Framework/bin/odatalib/include;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/**";
 				INFOPLIST_FILE = "oDataDemo1-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator\"",
+				);
 				PRODUCT_NAME = oDataDemo1;
 				VALIDATE_PRODUCT = YES;
 			};

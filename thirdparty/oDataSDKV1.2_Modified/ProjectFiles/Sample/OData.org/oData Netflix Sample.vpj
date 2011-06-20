@@ -1,0 +1,378 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+   Version="10.0"
+   VendorName="SlickEdit"
+   WorkingDir=".">
+   <Config
+      Name="Debug"
+      Type="gnuc"
+      DebugCallbackName="gdb"
+      Version="1"
+      OutputFile="%bdoData Netflix Sample"
+      CompilerConfigName="Latest Version">
+      <Menu>
+         <Target
+            Name="Compile"
+            MenuCaption="&amp;Compile"
+            Dialog="_gnuc_options_form Compile"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            OutputExts="*.o"
+            SaveOption="SaveCurrent"
+            RunFromDir="%rw">
+            <Exec CmdLine='g++ -c %xup  %defd -g -o "%bd%n%oe" %i "%f"'/>
+         </Target>
+         <Target
+            Name="Link"
+            MenuCaption="&amp;Link"
+            ShowOnMenu="Never"
+            Dialog="_gnuc_options_form Link"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveCurrent"
+            RunFromDir="%rw">
+            <Exec CmdLine='g++ %xup -g -o "%o" %f %libs'/>
+         </Target>
+         <Target
+            Name="Build"
+            MenuCaption="&amp;Build"
+            Dialog="_gnuc_options_form Compile"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveWorkspaceFiles"
+            RunFromDir="%rw">
+            <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+         </Target>
+         <Target
+            Name="Rebuild"
+            MenuCaption="&amp;Rebuild"
+            Dialog="_gnuc_options_form Compile"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveWorkspaceFiles"
+            RunFromDir="%rw">
+            <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+         </Target>
+         <Target
+            Name="Debug"
+            MenuCaption="&amp;Debug"
+            Dialog="_gnuc_options_form Run/Debug"
+            BuildFirst="1"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveNone"
+            RunFromDir="%rw">
+            <Exec CmdLine='vsdebugio -prog "%o"'/>
+         </Target>
+         <Target
+            Name="Execute"
+            MenuCaption="E&amp;xecute"
+            Dialog="_gnuc_options_form Run/Debug"
+            BuildFirst="1"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveWorkspaceFiles"
+            RunFromDir="%rw">
+            <Exec CmdLine='"%o"'/>
+         </Target>
+         <Target
+            Name="dash"
+            MenuCaption="-"
+            Deletable="0">
+            <Exec/>
+         </Target>
+         <Target
+            Name="GNU C Options"
+            MenuCaption="GNU C &amp;Options..."
+            ShowOnMenu="HideIfNoCmdLine"
+            Deletable="0"
+            SaveOption="SaveNone">
+            <Exec
+               CmdLine="gnucoptions"
+               Type="Slick-C"/>
+         </Target>
+      </Menu>
+   </Config>
+   <Config
+      Name="Release"
+      Type="gnuc"
+      DebugCallbackName="gdb"
+      Version="1"
+      OutputFile="%bdoData Netflix Sample"
+      CompilerConfigName="Latest Version">
+      <Menu>
+         <Target
+            Name="Compile"
+            MenuCaption="&amp;Compile"
+            Dialog="_gnuc_options_form Compile"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            OutputExts="*.o"
+            SaveOption="SaveCurrent"
+            RunFromDir="%rw">
+            <Exec CmdLine='g++ -c %xup %defd -o "%bd%n%oe" %i "%f"'/>
+         </Target>
+         <Target
+            Name="Link"
+            MenuCaption="&amp;Link"
+            ShowOnMenu="Never"
+            Dialog="_gnuc_options_form Link"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveCurrent"
+            RunFromDir="%rw">
+            <Exec CmdLine='g++ %xup -o "%o" %f %libs'/>
+         </Target>
+         <Target
+            Name="Build"
+            MenuCaption="&amp;Build"
+            Dialog="_gnuc_options_form Compile"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveWorkspaceFiles"
+            RunFromDir="%rw">
+            <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+         </Target>
+         <Target
+            Name="Rebuild"
+            MenuCaption="&amp;Rebuild"
+            Dialog="_gnuc_options_form Compile"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveWorkspaceFiles"
+            RunFromDir="%rw">
+            <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+         </Target>
+         <Target
+            Name="Debug"
+            MenuCaption="&amp;Debug"
+            Dialog="_gnuc_options_form Run/Debug"
+            BuildFirst="1"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveNone"
+            RunFromDir="%rw">
+            <Exec CmdLine='vsdebugio -prog "%o"'/>
+         </Target>
+         <Target
+            Name="Execute"
+            MenuCaption="E&amp;xecute"
+            Dialog="_gnuc_options_form Run/Debug"
+            BuildFirst="1"
+            CaptureOutputWith="ProcessBuffer"
+            Deletable="0"
+            SaveOption="SaveWorkspaceFiles"
+            RunFromDir="%rw">
+            <Exec CmdLine='"%o"'/>
+         </Target>
+         <Target
+            Name="dash"
+            MenuCaption="-"
+            Deletable="0">
+            <Exec/>
+         </Target>
+         <Target
+            Name="GNU C Options"
+            MenuCaption="GNU C &amp;Options..."
+            ShowOnMenu="HideIfNoCmdLine"
+            Deletable="0"
+            SaveOption="SaveNone">
+            <Exec
+               CmdLine="gnucoptions"
+               Type="Slick-C"/>
+         </Target>
+      </Menu>
+   </Config>
+   <Files>
+      <Folder
+         Name="Source Files"
+         Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d"/>
+      <Folder
+         Name="Header Files"
+         Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+         <F N="../../framework/src/MSODataLib/Credential/ACSCredential.h"/>
+         <F N="../Netflix/netflix/include/ACSCredential.h"/>
+         <F N="../../framework/src/MSODataLib/Common/ACSUtil.h"/>
+         <F N="../Netflix/netflix/include/ACSUtil.h"/>
+         <F N="../../framework/src/MSODataLib/Exception/ACSUtilException.h"/>
+         <F N="../Netflix/netflix/include/ACSUtilException.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/AtomEntry.h"/>
+         <F N="../Netflix/netflix/include/AtomEntry.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/AtomParser.h"/>
+         <F N="../Netflix/netflix/include/AtomParser.h"/>
+         <F N="../../framework/src/MSODataLib/Credential/AzureTableCredential.h"/>
+         <F N="../Netflix/netflix/include/AzureTableCredential.h"/>
+         <F N="../../framework/src/MSODataLib/Common/AzureTableUtil.h"/>
+         <F N="../Netflix/netflix/include/AzureTableUtil.h"/>
+         <F N="../../framework/src/MSODataLib/Common/ClientType.h"/>
+         <F N="../Netflix/netflix/include/ClientType.h"/>
+         <F N="../../framework/src/MSODataLib/Context/constants.h"/>
+         <F N="../Netflix/netflix/include/constants.h"/>
+         <F N="../../framework/src/MSODataLib/Context/ContentStream.h"/>
+         <F N="../Netflix/netflix/include/ContentStream.h"/>
+         <F N="../../framework/src/MSODataLib/Credential/CredentialBase.h"/>
+         <F N="../Netflix/netflix/include/CredentialBase.h"/>
+         <F N="../../framework/src/MSODataLib/Credential/CredentialType.h"/>
+         <F N="../Netflix/netflix/include/CredentialType.h"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceQuery.h"/>
+         <F N="../Netflix/netflix/include/DataServiceQuery.h"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceQueryContinuation.h"/>
+         <F N="../Netflix/netflix/include/DataServiceQueryContinuation.h"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceRequestArgs.h"/>
+         <F N="../Netflix/netflix/include/DataServiceRequestArgs.h"/>
+         <F N="../../framework/src/MSODataLib/Exception/DataServiceRequestException.h"/>
+         <F N="../Netflix/netflix/include/DataServiceRequestException.h"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceResponse.h"/>
+         <F N="../Netflix/netflix/include/DataServiceResponse.h"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceSaveStream.h"/>
+         <F N="../Netflix/netflix/include/DataServiceSaveStream.h"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceStreamResponse.h"/>
+         <F N="../Netflix/netflix/include/DataServiceStreamResponse.h"/>
+         <F N="../Netflix/netflix/Classes/DemoService.h"/>
+         <F N="../Netflix/netflix/Classes/DetailsViewController.h"/>
+         <F N="../../framework/src/MSODataLib/Common/Dictionary.h"/>
+         <F N="../Netflix/netflix/include/Dictionary.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpBatchRequest.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpBatchResponse.h"/>
+         <F N="../../framework/src/MSODataLib/Context/HTTPHandler.h"/>
+         <F N="../Netflix/netflix/include/HTTPHandler.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HTTPHeaders.h"/>
+         <F N="../Netflix/netflix/include/HTTPHeaders.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpProxy.h"/>
+         <F N="../Netflix/netflix/include/HttpProxy.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpRequest.h"/>
+         <F N="../Netflix/netflix/include/HttpRequest.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpResponse.h"/>
+         <F N="../Netflix/netflix/include/HttpResponse.h"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/Microsoft_Http_Response.h"/>
+         <F N="../../framework/src/MSODataLib/Interfaces/mProperties.h"/>
+         <F N="../Netflix/netflix/include/mProperties.h"/>
+         <F N="../../framework/src/MSODataLib/Context/MSODataResponseDelegate.h"/>
+         <F N="../Netflix/netflix/include/MSODataResponseDelegate.h"/>
+         <F N="../Netflix/netflix/Classes/NetflixCatalog.h"/>
+         <F N="../../framework/src/MSODataLib/Context/ObjectContext.h"/>
+         <F N="../Netflix/netflix/include/ObjectContext.h"/>
+         <F N="../../framework/src/MSODataLib/Context/ObjectContextDelegate.h"/>
+         <F N="../Netflix/netflix/include/ObjectContextDelegate.h"/>
+         <F N="../../framework/src/MSODataLib/Common/ODataBool.h"/>
+         <F N="../Netflix/netflix/include/ODataBool.h"/>
+         <F N="../../framework/src/MSODataLib/Context/ODataDelegate.h"/>
+         <F N="../Netflix/netflix/include/ODataDelegate.h"/>
+         <F N="../../framework/src/MSODataLib/Interfaces/ODataEntity.h"/>
+         <F N="../Netflix/netflix/include/ODataEntity.h"/>
+         <F N="../../framework/src/MSODataLib/Common/ODataGUID.h"/>
+         <F N="../Netflix/netflix/include/ODataGUID.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataNameSpace.h"/>
+         <F N="../../framework/src/MSODataLib/Interfaces/ODataObject.h"/>
+         <F N="../Netflix/netflix/include/ODataObject.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataRTTI.h"/>
+         <F N="../Netflix/netflix/include/ODataRTTI.h"/>
+         <F N="../Netflix/netflix/Classes/ODataSampleAppAppDelegate.h"/>
+         <F N="../../framework/src/MSODataLib/Exception/ODataServiceException.h"/>
+         <F N="../Netflix/netflix/include/ODataServiceException.h"/>
+         <F N="../../framework/src/MSODataLib/Context/ODataSVC.h"/>
+         <F N="../Netflix/netflix/include/ODataSVC.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataXMLElements.h"/>
+         <F N="../Netflix/netflix/include/ODataXMLElements.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataXMlParser.h"/>
+         <F N="../Netflix/netflix/include/ODataXMlParser.h"/>
+         <F N="../../framework/src/MSODataLib/Context/OperationResponse.h"/>
+         <F N="../Netflix/netflix/include/OperationResponse.h"/>
+         <F N="../../framework/src/MSODataLib/Common/Pair.h"/>
+         <F N="../Netflix/netflix/include/Pair.h"/>
+         <F N="../../framework/src/MSODataLib/Context/QueryComponents.h"/>
+         <F N="../Netflix/netflix/include/QueryComponents.h"/>
+         <F N="../../framework/src/MSODataLib/Context/QueryOperationResponse.h"/>
+         <F N="../Netflix/netflix/include/QueryOperationResponse.h"/>
+         <F N="../../framework/src/MSODataLib/Context/RelatedEnd.h"/>
+         <F N="../Netflix/netflix/include/RelatedEnd.h"/>
+         <F N="../../framework/src/MSODataLib/Context/ResourceBox.h"/>
+         <F N="../Netflix/netflix/include/ResourceBox.h"/>
+         <F N="../Netflix/netflix/Classes/RootViewController.h"/>
+         <F N="../../framework/src/MSODataLib/Context/SaveResult.h"/>
+         <F N="../Netflix/netflix/include/SaveResult.h"/>
+         <F N="../../framework/src/MSODataLib/Azure/TableEntry.h"/>
+         <F N="../Netflix/netflix/include/TableEntry.h"/>
+         <F N="../../framework/src/MSODataLib/Azure/Tables.h"/>
+         <F N="../Netflix/netflix/include/Tables.h"/>
+         <F N="../../framework/src/MSODataLib/Common/Utility.h"/>
+         <F N="../Netflix/netflix/include/Utility.h"/>
+         <F N="../../framework/src/MSODataLib/Credential/WindowsCredential.h"/>
+         <F N="../Netflix/netflix/include/WindowsCredential.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/XMLBuilder.h"/>
+         <F N="../Netflix/netflix/include/XMLBuilder.h"/>
+         <F N="../../framework/src/MSODataLib/Parser/XMLGenerator.h"/>
+         <F N="../Netflix/netflix/include/XMLGenerator.h"/>
+         <F N="../Netflix/netflix/include/XMLHandler.h"/>
+      </Folder>
+      <Folder
+         Name="Resource Files"
+         Filters="*.ico;*.cur;*.dlg"/>
+      <Folder
+         Name="Bitmaps"
+         Filters="*.bmp"/>
+      <Folder
+         Name="Other Files"
+         Filters="">
+         <F N="../../framework/src/MSODataLib/Credential/ACSCredential.m"/>
+         <F N="../../framework/src/MSODataLib/Common/ACSUtil.m"/>
+         <F N="../../framework/src/MSODataLib/Exception/ACSUtilException.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/AtomEntry.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/AtomParser.m"/>
+         <F N="../../framework/src/MSODataLib/Credential/AzureTableCredential.m"/>
+         <F N="../../framework/src/MSODataLib/Common/AzureTableUtil.m"/>
+         <F N="../../framework/src/MSODataLib/Common/ClientType.m"/>
+         <F N="../../framework/src/MSODataLib/Context/constants.m"/>
+         <F N="../../framework/src/MSODataLib/Context/ContentStream.m"/>
+         <F N="../../framework/src/MSODataLib/Credential/CredentialBase.m"/>
+         <F N="../../framework/src/MSODataLib/Credential/CredentialType.m"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceQuery.m"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceQueryContinuation.m"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceRequestArgs.m"/>
+         <F N="../../framework/src/MSODataLib/Exception/DataServiceRequestException.m"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceResponse.m"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceSaveStream.m"/>
+         <F N="../../framework/src/MSODataLib/Context/DataServiceStreamResponse.m"/>
+         <F N="../Netflix/netflix/Classes/DemoService.m"/>
+         <F N="../Netflix/netflix/Classes/DetailsViewController.m"/>
+         <F N="../../framework/src/MSODataLib/Common/Dictionary.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpBatchRequest.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpBatchResponse.m"/>
+         <F N="../../framework/src/MSODataLib/Context/HTTPHandler.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HTTPHeaders.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpProxy.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpRequest.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/HttpResponse.m"/>
+         <F N="../Netflix/netflix/main.m"/>
+         <F N="../../framework/src/MSODataLib/WebUtil/Microsoft_Http_Response.m"/>
+         <F N="../../framework/src/MSODataLib/Interfaces/mProperties.m"/>
+         <F N="../Netflix/netflix/Classes/NetflixCatalog.m"/>
+         <F N="../../framework/src/MSODataLib/Context/ObjectContext.m"/>
+         <F N="../../framework/src/MSODataLib/Common/ODataBool.m"/>
+         <F N="../../framework/src/MSODataLib/Interfaces/ODataEntity.m"/>
+         <F N="../../framework/src/MSODataLib/Common/ODataGUID.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataNameSpace.m"/>
+         <F N="../../framework/src/MSODataLib/Interfaces/ODataObject.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataRTTI.m"/>
+         <F N="../Netflix/netflix/Classes/ODataSampleAppAppDelegate.m"/>
+         <F N="../../framework/src/MSODataLib/Exception/ODataServiceException.m"/>
+         <F N="../../framework/src/MSODataLib/Context/ODataSVC.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataXMLElements.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/ODataXMlParser.m"/>
+         <F N="../../framework/src/MSODataLib/Context/OperationResponse.m"/>
+         <F N="../../framework/src/MSODataLib/Common/Pair.m"/>
+         <F N="../../framework/src/MSODataLib/Context/QueryComponents.m"/>
+         <F N="../../framework/src/MSODataLib/Context/QueryOperationResponse.m"/>
+         <F N="../../framework/src/MSODataLib/Context/RelatedEnd.m"/>
+         <F N="../../framework/src/MSODataLib/Context/ResourceBox.m"/>
+         <F N="../Netflix/netflix/Classes/RootViewController.m"/>
+         <F N="../../framework/src/MSODataLib/Context/SaveResult.m"/>
+         <F N="../../framework/src/MSODataLib/Azure/TableEntry.m"/>
+         <F N="../../framework/src/MSODataLib/Azure/Tables.m"/>
+         <F N="../../framework/src/MSODataLib/Common/Utility.m"/>
+         <F N="../../framework/src/MSODataLib/Credential/WindowsCredential.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/XMLBuilder.m"/>
+         <F N="../../framework/src/MSODataLib/Parser/XMLGenerator.m"/>
+      </Folder>
+   </Files>
+</Project>
