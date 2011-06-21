@@ -9,6 +9,10 @@ Server developer's portal (devzone.AdvantageDatabase.com). To modify
 this to point to your own service, open the project's ConfigSettings.plist
 file and modify the "Service URI" key.
 
+Requirements:
+- XCode 4
+- iOS SDK 4.3
+
 Screencasts that reference/use this source:
 - Getting Started with iOS Development and Advantage
   http://jdmullin.blogspot.com/2011/05/getting-started-with-ios-development.html
@@ -33,3 +37,7 @@ TODO:
 - Currently links directly to the iPhone simulator version
   of the OData library. Need to modify to link to simulator
   or device lib based on project configuration.
+- Also links to OData lib build with iOS SDK version 4.3. Need
+  to work with OData lib authors to turn it into a "standard"
+  framework that can be linked via multiple SDK's and debug/release
+  configurations.
