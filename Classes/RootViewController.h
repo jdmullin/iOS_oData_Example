@@ -16,9 +16,11 @@
     NSMutableArray *_tasksArray;
     NSString *errorString;
     NSOperationQueue *_jobQueue;
+    NSDateFormatter *dateFormatter;
 }
 
 @property (nonatomic, retain) NSString *errorString;
+@property (nonatomic, retain) NSDateFormatter *dateFormatter;
 
 - (void)addItem;
 

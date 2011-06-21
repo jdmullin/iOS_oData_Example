@@ -13,7 +13,7 @@
 
 @implementation RootViewController
 
-@synthesize errorString;
+@synthesize errorString, dateFormatter;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -82,8 +82,14 @@
     // add edit button to the navigation bar
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
+    // init job queue
     _jobQueue = [[NSOperationQueue alloc] init];
     
+    // init date formatter
+    self.dateFormatter = [[NSDateFormatter alloc] init];        
+    [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    // set PullToRefresh text messages
     self.textLoading = @"Loading Tasks...";
     self.textPull = @"Pull down to refresh";
     self.textRelease = @"Release to refresh";
@@ -239,8 +245,9 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
     
 	// Configure the cell.
     tasks_Model_Entities_Tasks *task = [_tasksArray objectAtIndex:[indexPath row]];
-    cell.textLabel.text = [task getname];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Started: %@", [task getstarted] ? [[task getstarted] description] : @"Not Yet"];
+    cell.textLabel.text = [task getname];    
+    NSString *dateString = [task getstarted] ? [dateFormatter stringFromDate:[task getstarted]] : @"Not Yet";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Started: %@", dateString];
 
     return cell;
 }
@@ -300,6 +307,7 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
     _jobQueue = nil;
+    dateFormatter = nil;
 }
 
 
@@ -311,6 +319,7 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
     [_tasksArray release];
     [errorString release];
     [_jobQueue release];
+    [dateFormatter release];
 }
 
 
