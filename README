@@ -9,6 +9,17 @@ Server developer's portal (devzone.AdvantageDatabase.com). To modify
 this to point to your own service, open the project's ConfigSettings.plist
 file and modify the "Service URI" key.
 
+TODO:
+- Currently links directly to the iPhone simulator version
+  of the OData library. Need to modify to link to simulator
+  or device lib based on project configuration.
+- The OData lib the demo uses was built with iOS SDK version 4.3. Because 
+  of this your mileage may vary, see next TODO item for what will hopefully
+  fix this in the future.
+- Need to work with OData lib authors to turn it into a "standard"
+  framework that can be linked via multiple SDK's and debug/release
+  configurations.
+
 Requirements:
 - XCode 4
 - iOS SDK 4.3
@@ -32,12 +43,3 @@ Current Functionality:
 Future Functionality:
 - Paging support
 - Filter and OrderBy 
-
-TODO:
-- Currently links directly to the iPhone simulator version
-  of the OData library. Need to modify to link to simulator
-  or device lib based on project configuration.
-- Also links to OData lib build with iOS SDK version 4.3. Need
-  to work with OData lib authors to turn it into a "standard"
-  framework that can be linked via multiple SDK's and debug/release
-  configurations.
