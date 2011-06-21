@@ -231,15 +231,14 @@
         
         if ( [indexPath row] == 0 ) {
             cell.textLabel.text = @"Started";
-            theDate = [self.task getstarted];
-            cell.detailTextLabel.text = ( theDate == nil ) ? @"" : [dateFormatter stringFromDate:theDate];                
+            theDate = [self.task getstarted];            
         }
         else {
             cell.textLabel.text = @"Finished";
             theDate = [self.task getfinished];
-            cell.detailTextLabel.text = ( theDate == nil ) ? @"" : [dateFormatter stringFromDate:theDate];                
         }
         
+        cell.detailTextLabel.text = ( theDate == nil ) ? @"" : [dateFormatter stringFromDate:theDate];                        
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [dateFormatter release];        
     }           

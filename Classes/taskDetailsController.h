@@ -15,7 +15,6 @@
 @interface TaskDetailsController : UIViewController <UITextFieldDelegate, DateDetailsDelegate> {
     
     IBOutlet UITableView *taskDetailsTable;
-    UIDatePicker *taskDatePicker;
     tasks_Model_Entities_Tasks *task;
     NSIndexPath *taskIndexPath;
     id <TaskDetailsDelegate> delegate;

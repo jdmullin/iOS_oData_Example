@@ -29,7 +29,7 @@
     NSString *odataUri = [plistDictionary valueForKey:@"Service URI"];
     
     // Create OData proxy class instance
-    WindowsCredential *cred = [[WindowsCredential alloc] initWithUserName:@"adssys" password:@""];    
+    WindowsCredential *cred = [[WindowsCredential alloc] initWithUserName:@"webuser" password:@"password"];    
     self.proxy = [[tasksData alloc] initWithUri:odataUri credential:cred];
     [cred release];
     

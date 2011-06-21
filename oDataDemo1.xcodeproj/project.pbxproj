@@ -257,6 +257,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator\"",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = oDataDemo1;
 			};
 			name = Debug;
@@ -274,6 +275,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/thirdparty/oDataSDKV1.2_Modified/ProjectFiles/framework/src/MSODataLib/build/Debug-iphonesimulator\"",
 				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = oDataDemo1;
 				VALIDATE_PRODUCT = YES;
 			};

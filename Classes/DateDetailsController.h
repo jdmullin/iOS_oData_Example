@@ -20,7 +20,6 @@
     id <DateDetailsDelegate> delegate;
 }
 
-// unresolved jmu - should "retain" be "assign"?
 @property (nonatomic, retain) NSString *dateName;
 @property (nonatomic, retain) NSDate *dateValue;
 @property (nonatomic, retain) PCCustomSwitch *customSwitch;
