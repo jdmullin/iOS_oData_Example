@@ -23,10 +23,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Override point for customization after application launch.
+    // Get URL of our OData service from property file ConfigProperties.plist
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"ConfigProperties" ofType:@"plist"];
+    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    NSString *odataUri = [plistDictionary valueForKey:@"Service URI"];
+    
+    // Create OData proxy class instance
     WindowsCredential *cred = [[WindowsCredential alloc] initWithUserName:@"adssys" password:@""];    
-    self.proxy = [[tasksData alloc] initWithUri:@"http://jdsmac_win7:6272/adsweb/example_db/1/" credential:cred];
-    //self.proxy = [[tasksData alloc] initWithUri:@"https://devzone.advantagedatabase.com:6282/adsweb/example_db/1/" credential:cred];
+    self.proxy = [[tasksData alloc] initWithUri:odataUri credential:cred];
     [cred release];
     
     // Set the navigation controller as the window's root view controller and display.
