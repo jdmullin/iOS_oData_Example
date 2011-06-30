@@ -3,7 +3,7 @@
 //  oDataDemo1
 //
 //  Created by Jeremy Mullin on 5/31/11.
-//  Copyright 2011 Sybase. All rights reserved.
+//  Copyright 2011 Jeremy Mullin. All rights reserved.
 //
 
 #import "TaskDetailsController.h"
