@@ -62,8 +62,10 @@
                 [alert show];
             }
             
-            if ( firstPage )
+            if ( firstPage ) {
                 [self stopLoading];
+                self.lastUpdatedDate = [NSDate date];
+            }
             else
                 [self stopLoadingFooter];
         }];        
