@@ -29,30 +29,65 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    PullRefreshTableViewControllerThemeDefault,
+    PullRefreshTableViewControllerThemeEgo
+} PullRefreshTableViewControllerTheme;
 
 @interface PullRefreshTableViewController : UITableViewController {
-    UIView *refreshHeaderView;
-    UILabel *refreshLabel;
-    UIImageView *refreshArrow;
-    UIActivityIndicatorView *refreshSpinner;
+
     BOOL isDragging;
     BOOL isLoading;
-    NSString *textPull;
-    NSString *textRelease;
-    NSString *textLoading;
+
+    BOOL loadMoreIsLoading;
+    BOOL updatedLoadMoreFrame;    
+
+    @private
+        BOOL enablePullToRefresh;
+        BOOL enablePullToLoadMore;
+
 }
 
 @property (nonatomic, retain) UIView *refreshHeaderView;
+@property (nonatomic, retain) UIView *refreshHeaderBackgroundFillerView;
 @property (nonatomic, retain) UILabel *refreshLabel;
+@property (nonatomic, retain) UILabel *lastUpdatedLabel;
 @property (nonatomic, retain) UIImageView *refreshArrow;
 @property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
 @property (nonatomic, copy) NSString *textPull;
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;
+@property (nonatomic, retain) NSDate *lastUpdatedDate;
+@property (nonatomic) PullRefreshTableViewControllerTheme theme;
+
+
+@property (nonatomic, retain) UIView *loadMoreFooterView;
+@property (nonatomic, retain) UILabel *loadMoreLabel;
+@property (nonatomic, retain) UILabel *lastLoadedLabel;
+@property (nonatomic, retain) UIImageView *loadMoreArrow;
+@property (nonatomic, retain) UIActivityIndicatorView *loadMoreSpinner;
+@property (nonatomic, copy) NSString *loadMoreTextPull;
+@property (nonatomic, copy) NSString *loadMoreTextRelease;
+@property (nonatomic, copy) NSString *loadMoreTextLoading;
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil pullToRefresh:(BOOL) pullRefresh pullToLoadMore:(BOOL) pullLoad;
+
+- (NSString *)lastUpdatedString;
 
 - (void)addPullToRefreshHeader;
+- (void)addPullToLoadMoreFooter;
+
 - (void)startLoading;
 - (void)stopLoading;
+
+- (void)startLoadingFooter;
+- (void)stopLoadingFooter;
+
+
 - (void)refresh;
+- (void) moreLoaded;
+
+-(void) reloadData;
 
 @end

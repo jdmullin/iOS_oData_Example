@@ -17,6 +17,7 @@
     NSString *errorString;
     NSOperationQueue *_jobQueue;
     NSDateFormatter *dateFormatter;
+    DataServiceQueryContinuation *_nextPageToken;
 }
 
 @property (nonatomic, retain) NSString *errorString;

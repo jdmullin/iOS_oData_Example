@@ -21,16 +21,30 @@
 ////////////////////////////////////////////////////////////////////////
 // refresh tasks async
 ////////////////////////////////////////////////////////////////////////
-- (void)refreshTasks {
+- (void)loadTasks: (BOOL) firstPage {
     
     void (^getTasks)(void) = ^{
         @try {            
             self.errorString = nil;
             NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-                    
-            QueryOperationResponse *response = [[utils getApp].proxy execute:@"Tasks"];
-            _tasksArray = [response getResult];
-            [_tasksArray retain];
+            
+            if ( firstPage ) {
+                DataServiceQuery *query = [[utils getApp].proxy	tasks];
+                [query top:12];
+                QueryOperationResponse *response = [query execute];
+                [_nextPageToken release];
+                _nextPageToken = [[response getContinuation:nil] retain];
+                _tasksArray = [response getResult];
+                [_tasksArray retain];
+            }
+            else {
+                if ( [_nextPageToken getNextLinkUri] ) {
+                    QueryOperationResponse *response = [[utils getApp].proxy executeDSQueryContinuation:_nextPageToken];
+                    [_nextPageToken release];
+                    _nextPageToken = [[response getContinuation:nil] retain];
+                    [_tasksArray addObjectsFromArray:[response getResult]];
+                }
+            }
             
             [pool release];
         }
@@ -47,7 +61,11 @@
                 UIAlertView *alert = [ [[UIAlertView alloc] initWithTitle:@"Error" message:self.errorString delegate:nil cancelButtonTitle:@"Bummer" otherButtonTitles:nil ] autorelease];
                 [alert show];
             }
-            [self stopLoading];
+            
+            if ( firstPage )
+                [self stopLoading];
+            else
+                [self stopLoadingFooter];
         }];        
     };
     
@@ -62,7 +80,15 @@
 // Member of our parent, PullRefreshTableViewController
 ////////////////////////////////////////////////////////////////////////
 - (void)refresh {
-    [self refreshTasks];
+    [self loadTasks:YES];
+}
+
+
+////////////////////////////////////////////////////////////////////////
+// Member of our parent, PullRefreshTableViewController
+////////////////////////////////////////////////////////////////////////
+-(void) moreLoaded{    
+    [self loadTasks:NO];    
 }
 
 
@@ -317,6 +343,7 @@ tasks_Model_Entities_Tasks* cloneTask( tasks_Model_Entities_Tasks* task ) {
 - (void)dealloc {
     [super dealloc];        
     [_tasksArray release];
+    [_nextPageToken release];
     [errorString release];
     [_jobQueue release];
     [dateFormatter release];
